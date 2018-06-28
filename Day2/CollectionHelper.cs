@@ -39,7 +39,7 @@
         {
             ValidateIsNull(array, nameof(array));
 
-            if (!char.TryParse(digit.ToString(), out char charDigit))
+            if (!char.TryParse(digit.ToString(), out _))
             {
                 throw new InvalidOperationException(nameof(digit) + " must be digit");
             }
