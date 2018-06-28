@@ -20,13 +20,29 @@
             ValidateIsNull(collection, nameof(collection));
             ValidateIsNull(match, nameof(match));
 
-            foreach (var item in collection)
+            IEnumerable<T> InnerYield()
             {
-                if (match(item))
+                foreach (var item in collection)
                 {
-                    yield return item;
+                    if (match(item))
+                    {
+                        yield return item;
+                    }
                 }
             }
+
+            return InnerYield();
+        }
+
+        /// <summary>
+        /// Filters array of parameters by containing preset number in element
+        /// </summary>
+        /// <param name="digit">array to extend</param>
+        /// <param name="array">digit to search</param>
+        /// <returns>Array of matched elements</returns>
+        public static int[] FilterDigit(int digit, params int[] array)
+        {
+            return array.FilterDigit(digit);
         }
 
         /// <summary>
@@ -39,7 +55,7 @@
         {
             ValidateIsNull(array, nameof(array));
 
-            if (!char.TryParse(digit.ToString(), out char charDigit))
+            if (!char.TryParse(digit.ToString(), out _))
             {
                 throw new InvalidOperationException(nameof(digit) + " must be digit");
             }
@@ -56,7 +72,7 @@
 
             return result.ToArray();
         }
-        
+
         /// <summary>
         /// Checks if object is null
         /// </summary>

@@ -1,8 +1,6 @@
 ﻿namespace Day2
 {
     using System;
-    using System.Collections.Generic;
-    using System.Text;
 
     /// <summary>
     /// Contains a set of implementations of algorithms with bit operations

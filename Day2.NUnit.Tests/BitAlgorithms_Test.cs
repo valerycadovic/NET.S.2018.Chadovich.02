@@ -1,6 +1,5 @@
 ﻿using System;
 using NUnit.Framework;
-using Day2;
 
 namespace Day2.NUnit.Tests
 {
