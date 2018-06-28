@@ -8,6 +8,7 @@
     /// </summary>
     public static class CollectionHelper
     {
+        #region Task 6 via delegates
         /// <summary>
         /// Filters collection according to preset predicate
         /// </summary>
@@ -20,7 +21,7 @@
             ValidateIsNull(collection, nameof(collection));
             ValidateIsNull(match, nameof(match));
 
-            IEnumerable<T> InnerYield()
+            IEnumerable<T> InnerYield()                 // to handle exceptions in deferred execution method
             {
                 foreach (var item in collection)
                 {
@@ -33,7 +34,9 @@
 
             return InnerYield();
         }
+        #endregion
 
+        #region Task 6
         /// <summary>
         /// Filters array of parameters by containing preset number in element
         /// </summary>
@@ -54,23 +57,65 @@
         public static int[] FilterDigit(this int[] array, int digit)
         {
             ValidateIsNull(array, nameof(array));
-
-            if (!char.TryParse(digit.ToString(), out _))
-            {
-                throw new InvalidOperationException(nameof(digit) + " must be digit");
-            }
+            ValidateDigit(digit);
 
             List<int> result = new List<int>();
 
-            foreach (var item in array)
+            for (int i = 0; i < array.Length; i++)
             {
-                if (item.ToString().Contains(digit.ToString()))
+                if (array[i].ToString().Contains(digit.ToString()))
                 {
-                    result.Add(item);
+                    result.Add(array[i]);
                 }
             }
 
             return result.ToArray();
+        }
+        #endregion
+
+        /// <summary>
+        /// Filters array with integer numbers by containing preset number in element via arithmetic operations
+        /// </summary>
+        /// <param name="digit">digit to search</param>
+        /// <param name="array">array to extend</param>
+        /// <returns>Array of matched elements</returns>
+        public static int[] FilterDigitViaDivision(int digit, params int[] array)
+        {
+            ValidateDigit(digit);
+
+            List<int> result = new List<int>();
+
+            int item = 0;
+            for (int i = 0; i < array.Length; i++)
+            {
+                item = array[i];
+
+                while (item != 0)
+                {
+                    if (digit == Math.Abs(item % 10))
+                    {
+                        result.Add(array[i]);
+                        break;
+                    }
+
+                    item /= 10;
+                }
+            }
+
+            return result.ToArray();
+        }
+
+        #region Private Validation Methods
+        /// <summary>
+        /// checks if it is a digit
+        /// </summary>
+        /// <param name="digit">digit to check</param>
+        private static void ValidateDigit(int digit)
+        {
+            if (!char.TryParse(digit.ToString(), out _))
+            {
+                throw new InvalidOperationException(nameof(digit) + " must be digit");
+            }
         }
 
         /// <summary>
@@ -85,5 +130,6 @@
                 throw new ArgumentNullException(objName + " refers to null");
             }
         }
+        #endregion
     }
 }

@@ -14,6 +14,13 @@ namespace Day2.NUnit.Tests
         public void FilterDigit_Throws_InvalidOperationException(int[] array, int digit) => Assert.That(() =>
         array.FilterDigit(digit), Throws.TypeOf<InvalidOperationException>());
 
+        [TestCase(1, new int[] { 1, 2, 11, 12, 121, -1, 4, 6 }, ExpectedResult = new int[] { 1, 11, 12, 121, -1 })]
+        public int[] Can_FilterDigitViaDivision(int digit, params int[] array) => CollectionHelper.FilterDigitViaDivision(digit, array);
+
+        [TestCase(10, new int[] { 1, 2, 11, 12, 121, -1, 4, 6 })]
+        public void FilterDigitViaDivision_Throws_InvalidOperationException(int digit, params int[] array) => Assert.That(() =>
+        CollectionHelper.FilterDigitViaDivision(digit, array), Throws.TypeOf<InvalidOperationException>());
+
         [TestCase(new int[] { 1, 2, 11, 12, 121, -1, 4, 6 }, ExpectedResult = new int[] { 1, 11, 12, 121, -1 })]
         public IEnumerable<int> Can_FilterDigit(IEnumerable<int> array)
             => array.Filter(n => n.ToString().Contains("1"));
