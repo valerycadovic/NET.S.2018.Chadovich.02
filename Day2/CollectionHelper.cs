@@ -4,7 +4,7 @@
     using System.Collections.Generic;
 
     /// <summary>
-    /// Extension methods set of collections
+    /// Extension methods set for collections
     /// </summary>
     public static class CollectionHelper
     {
