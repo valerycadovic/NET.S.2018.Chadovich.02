@@ -27,12 +27,14 @@
                 throw new ArgumentOutOfRangeException($"{nameof(start)} cannot be greater than {nameof(end)}");
             }
 
-            if (start < 0 || start >= 32)
+            int intBits = 8 * sizeof(int);
+
+            if (start < 0 || start >= intBits)
             {
                 throw new ArgumentOutOfRangeException($"{nameof(start)} is out of range");
             }
 
-            if (end < 0 || end >= 32)
+            if (end < 0 || end >= intBits)
             {
                 throw new ArgumentOutOfRangeException($"{nameof(end)} is out of range");
             }
