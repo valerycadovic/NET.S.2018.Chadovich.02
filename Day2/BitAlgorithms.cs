@@ -19,12 +19,12 @@
         {
             if (source < 0 || drain < 0)
             {
-                throw new InvalidOperationException("numbers shouldn't be negative");
+                throw new ArgumentOutOfRangeException("numbers shouldn't be negative");
             }
 
             if (start > end)
             {
-                throw new InvalidOperationException($"{nameof(start)} cannot be greater than {nameof(end)}");
+                throw new ArgumentOutOfRangeException($"{nameof(start)} cannot be greater than {nameof(end)}");
             }
 
             if (start < 0 || start >= 32)

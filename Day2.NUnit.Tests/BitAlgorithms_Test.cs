@@ -20,14 +20,14 @@ namespace Day2.NUnit.Tests
             () => BitAlgorithms.InsertNumber(8, 15, 1, 35));
 
         [Test]
-        public void Insert_Throws_If_EndLessThanStart() => Assert.Throws<InvalidOperationException>(
+        public void Insert_Throws_If_EndLessThanStart() => Assert.Throws<ArgumentOutOfRangeException>(
             () => BitAlgorithms.InsertNumber(8, 15, 10, 9));
 
         [TestCase(-8, 15, 0, 1)]
         [TestCase(8, -15, 0, 1)]
         [TestCase(-8, -15, 0, 1)]
         public void Insert_Throws_If_Negative(int source, int drain, int start, int end) 
-            => Assert.Throws<InvalidOperationException>(
+            => Assert.Throws<ArgumentOutOfRangeException>(
             () => BitAlgorithms.InsertNumber(source, drain, start, end));
 
     }

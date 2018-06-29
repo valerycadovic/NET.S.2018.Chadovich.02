@@ -112,9 +112,9 @@
         /// <param name="digit">digit to check</param>
         private static void ValidateDigit(int digit)
         {
-            if (!char.TryParse(digit.ToString(), out _))
+            if (digit > 9 || digit < 0)
             {
-                throw new InvalidOperationException(nameof(digit) + " must be digit");
+                throw new ArgumentOutOfRangeException(nameof(digit) + " must be digit");
             }
         }
 
