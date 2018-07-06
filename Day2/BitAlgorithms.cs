@@ -14,6 +14,9 @@
         /// <param name="drain">number to insert</param>
         /// <param name="start">start insert position</param>
         /// <param name="end">end insert position</param>
+        /// <exception cref="ArgumentOutOfRangeException">
+        /// Throws when source and drain are negative or start and end set invalid range
+        /// </exception>
         /// <returns>mapped number</returns>
         public static int InsertNumber(int source, int drain, int start, int end)
         {
@@ -27,7 +30,7 @@
                 throw new ArgumentOutOfRangeException($"{nameof(start)} cannot be greater than {nameof(end)}");
             }
 
-            int intBits = 8 * sizeof(int);
+            const int intBits = 8 * sizeof(int);
 
             if (start < 0 || start >= intBits)
             {

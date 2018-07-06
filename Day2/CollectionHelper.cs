@@ -15,6 +15,7 @@
         /// <typeparam name="T">type of collection elements</typeparam>
         /// <param name="collection">collection to be extended</param>
         /// <param name="match">matching condition</param>
+        /// <exception cref="ArgumentNullException">Throws when match or collection is null</exception>
         /// <returns>Collection of matched elements</returns>
         public static IEnumerable<T> Filter<T>(this IEnumerable<T> collection, Predicate<T> match)
         {
@@ -42,6 +43,7 @@
         /// </summary>
         /// <param name="digit">array to extend</param>
         /// <param name="array">digit to search</param>
+        /// <exception cref="ArgumentOutOfRangeException">Throws when digit is not in range of 0 to 9</exception>
         /// <returns>Array of matched elements</returns>
         public static int[] FilterDigit(int digit, params int[] array)
         {
@@ -53,6 +55,8 @@
         /// </summary>
         /// <param name="array">array to extend</param>
         /// <param name="digit">digit to search</param>
+        /// <exception cref="ArgumentNullException">Throws when match or collection is null</exception>
+        /// <exception cref="ArgumentOutOfRangeException">Throws when digit is not in range of 0 to 9</exception>
         /// <returns>Array of matched elements</returns>
         public static int[] FilterDigit(this int[] array, int digit)
         {
@@ -78,6 +82,7 @@
         /// </summary>
         /// <param name="digit">digit to search</param>
         /// <param name="array">array to extend</param>
+        /// <exception cref="ArgumentOutOfRangeException">Throws when digit is not in range of 0 to 9</exception>
         /// <returns>Array of matched elements</returns>
         public static int[] FilterDigitViaDivision(int digit, params int[] array)
         {
